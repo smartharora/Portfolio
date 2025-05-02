@@ -30,4 +30,10 @@ export default [
       ],
     },
   },
+  {
+    files: ['**/*.css'],
+    rules: {
+      'no-unknown-at-rules': 'off'
+    }
+  }
 ]
