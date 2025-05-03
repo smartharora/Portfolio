@@ -1,12 +1,82 @@
-# React + Vite
+# Smarth Arora's Portfolio 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive portfolio website showcasing my skills, experience, and projects. Built with React, Framer Motion, and Tailwind CSS.
 
-Currently, two official plugins are available:
+![Portfolio Preview](public/preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- **Modern Design**: Clean, responsive layout with glassmorphic effects
+- **Interactive Animations**: Smooth transitions and hover effects using Framer Motion
+- **Dynamic Content**: Showcase of skills, experience, and projects
+- **Easter Eggs**: Fun interactive elements hidden throughout the site
+- **Performance Optimized**: Fast loading and smooth scrolling
+- **Mobile Responsive**: Looks great on all devices
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- **Frontend**: React, Vite
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: React Icons
+- **Deployment**: Vercel/Netlify
+
+## 📦 Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/smartharora/Portfolio.git
+cd Portfolio
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Build for production:
+```bash
+npm run build
+```
+
+## 🎨 Project Structure
+
+```
+src/
+├── components/     # React components
+├── data/          # Static data (resume, projects, etc.)
+├── public/        # Static assets
+└── App.jsx        # Main application component
+```
+
+## 🚀 Deployment
+
+The portfolio is deployed on [Vercel](https://vercel.com) for optimal performance and automatic deployments.
+
+## 🎮 Easter Eggs
+
+- Click the "Let's Work Together" button three times to reveal a fun animation
+- More secrets hidden throughout the site... can you find them all? 😉
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Feel free to fork this project and use it as a template for your own portfolio. If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
+
+## 📞 Contact
+
+- **Email**: iamsmartharora@gmail.com
+- **LinkedIn**: [smartharora](https://linkedin.com/in/smartharora)
+- **GitHub**: [smartharora](https://github.com/smartharora)
+
+---
+
+Made with ❤️ by Smarth Arora
