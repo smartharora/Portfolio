@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
@@ -45,14 +45,62 @@ const downloadButton = {
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-  
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Force video to play
+      const playVideo = async () => {
+        try {
+          await video.play();
+          console.log('Video started playing');
+        } catch (error) {
+          console.error('Error playing video:', error);
+        }
+      };
+
+      // Add event listeners for better debugging
+      video.addEventListener('loadeddata', () => {
+        console.log('Video loaded successfully');
+        playVideo();
+      });
+
+      video.addEventListener('error', (e) => {
+        console.error('Video error:', e);
+      });
+
+      // Initial attempt to play
+      playVideo();
+    }
+  }, []);
+
   return (
-    <section id="hero" ref={ref} className="min-h-screen flex items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 text-white px-4">
+    <section id="hero" ref={ref} className="relative min-h-screen flex items-center justify-center text-white px-4 overflow-hidden">
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ backgroundColor: 'black' }}
+        >
+          <source src="/videos/background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      </div>
+
       <motion.div
         variants={container}
         initial="hidden"
         animate={inView ? "show" : "hidden"}
-        className="max-w-4xl mx-auto text-center"
+        className="relative max-w-4xl mx-auto text-center z-10"
       >
         <motion.h1 
           variants={item}
@@ -79,7 +127,9 @@ export default function Hero() {
               'I automate CI/CD pipelines',
               'I experiment with modern frontend',
               'I optimize database performance',
-              'I design microservices architecture'
+              'I design microservices architecture',
+              'I fly drones',
+              'I Also try to not crash drones',
             ]}
             loop={true}
             cursor
