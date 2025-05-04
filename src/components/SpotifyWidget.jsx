@@ -33,11 +33,11 @@ const SpotifyWidget = () => {
         </button>
       </div>
 
-      <div className="space-y-4">
+      <div className="grid grid-cols-2 gap-4">
         {playlists.map((playlist) => (
           <div
             key={playlist.id}
-            className="bg-gray-800 rounded-lg overflow-hidden"
+            className="bg-gray-800 rounded-lg overflow-hidden hover:scale-102 transition-transform duration-200"
           >
             <iframe
               style={{ borderRadius: '12px' }}
