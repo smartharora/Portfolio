@@ -30,22 +30,24 @@ const PortalOverlay = ({ isOpen, onClose, children, from }) => (
         animate={{ opacity: 1, x: 0 }}
         exit={{ opacity: 0, ...(from === 'right' ? { x: '100%' } : { x: '-100%' }) }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="fixed inset-0 z-40"
+        className="fixed inset-0 z-40 bg-gray-900/95"
       >
         <div className="absolute inset-0 backdrop-blur-md" onClick={onClose} />
         <motion.div 
-          className={`absolute inset-y-0 ${from === 'right' ? 'right-0' : 'left-0'} w-full md:w-2/3 lg:w-1/2 bg-gray-900/95 shadow-2xl`}
+          className="absolute inset-0 w-full h-full bg-gray-900/95 shadow-2xl"
           initial={{ opacity: 0, x: from === 'right' ? 100 : -100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: from === 'right' ? 100 : -100 }}
         >
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-colors"
+            className="absolute top-4 right-4 p-2 rounded-full bg-gray-800/50 hover:bg-gray-700/50 transition-colors z-50"
           >
             <FaTimes className="text-gray-400 hover:text-white" />
           </button>
-          <div className="h-full overflow-auto py-16 px-6">
+          <div 
+            className="h-full py-16 px-6 max-w-7xl mx-auto overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {children}
           </div>
         </motion.div>
