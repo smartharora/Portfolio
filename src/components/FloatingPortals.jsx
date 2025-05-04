@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaBriefcase, FaUser, FaTimes, FaCode, FaBook, FaYoutube, FaSpotify, FaGamepad, FaGithub, FaLightbulb, FaTools, FaBookReader } from 'react-icons/fa';
+import { FaBriefcase, FaUser, FaTimes, FaCode, FaBook, FaSpotify, FaGamepad, FaGithub } from 'react-icons/fa';
 import { RiRocketLine, RiTerminalBoxFill, RiTestTubeFill } from 'react-icons/ri';
 import MediaSection from './MediaSection';
 
+// eslint-disable-next-line no-unused-vars
 const FloatingButton = ({ icon: Icon, onClick, position, color, pulseColor, isActive }) => (
   <motion.button
     onClick={onClick}
@@ -84,7 +85,7 @@ const ProfessionalContent = () => (
       </div>
       
       <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 hover:bg-gray-700/50 transition-colors">
-        <FaBookReader className="text-2xl text-green-400 mb-4" />
+        <FaBook className="text-2xl text-green-400 mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">Learning Resources</h3>
         <ul className="text-gray-400 space-y-2">
           <li>• Clean Code by Robert C. Martin</li>
@@ -117,7 +118,7 @@ const ProfessionalContent = () => (
       </div>
 
       <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 hover:bg-gray-700/50 transition-colors">
-        <FaTools className="text-2xl text-red-400 mb-4" />
+        <FaGithub className="text-2xl text-red-400 mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">Development Tools</h3>
         <ul className="text-gray-400 space-y-2">
           <li>• VS Code & JetBrains Suite</li>
@@ -128,7 +129,7 @@ const ProfessionalContent = () => (
       </div>
 
       <div className="bg-gray-800/50 rounded-xl p-6 border border-gray-700/50 hover:bg-gray-700/50 transition-colors">
-        <FaLightbulb className="text-2xl text-orange-400 mb-4" />
+        <FaGithub className="text-2xl text-orange-400 mb-4" />
         <h3 className="text-xl font-semibold text-white mb-2">Learning Path</h3>
         <ul className="text-gray-400 space-y-2">
           <li>• System Design & Architecture</li>

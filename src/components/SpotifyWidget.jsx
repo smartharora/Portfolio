@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const SpotifyWidget = () => {
-  const [isCompact, setIsCompact] = useState(false);
+  const [isCompact, setIsCompact] = useState(true);
 
   const playlists = [
     {
@@ -29,7 +29,7 @@ const SpotifyWidget = () => {
           onClick={() => setIsCompact(!isCompact)}
           className="text-sm text-gray-400 hover:text-white transition-colors"
         >
-          {isCompact ? 'Show Full' : 'Show Compact'}
+          {isCompact ? 'Expand View' : 'Compact View'}
         </button>
       </div>
 
