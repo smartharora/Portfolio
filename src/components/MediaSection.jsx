@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaSpotify, FaGamepad, FaBook, FaSteam, FaWindows, FaBookOpen, FaGoodreads, FaChevronDown, FaLink, FaCode, FaGithub, FaExternalLinkAlt, FaCheckCircle } from 'react-icons/fa';
 import SpotifyWidget from './SpotifyWidget';
 
+// eslint-disable-next-line no-unused-vars
 const MediaCard = ({ icon: Icon, title, children }) => {
   return (
     <div

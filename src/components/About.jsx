@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FaCode, FaGraduationCap, FaRocket, FaGamepad, FaMusic, FaPlane } from 'react-icons/fa';
+import { FaCode, FaGraduationCap, FaRocket, FaGamepad, FaPlane } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 
 const container = {

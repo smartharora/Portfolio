@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { useInView } from 'react-intersection-observer';
