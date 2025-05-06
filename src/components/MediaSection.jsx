@@ -321,8 +321,8 @@ const ReadingWidget = () => {
 
 const MediaSection = () => {
   return (
-    <div className="space-y-8">
-      <MediaCard icon={FaSpotify} title="Music Corner">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <MediaCard icon={FaSpotify} title="My Playlists">
         <SpotifyWidget />
       </MediaCard>
       

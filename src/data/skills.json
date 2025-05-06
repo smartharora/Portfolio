@@ -1,0 +1,306 @@
+{
+  "Frontend": {
+    "description": "Building modern, responsive, and interactive user interfaces",
+    "skills": [
+      {
+        "name": "React",
+        "rating": 5,
+        "experience": "5+ yrs",
+        "details": "Component-driven UIs that scale",
+        "description": "Modern UI development",
+        "projects": "Dashboards, SPAs",
+        "connects_to": ["TypeScript", "Next.js", "Tailwind CSS"]
+      },
+      {
+        "name": "TypeScript",
+        "rating": 4.5,
+        "experience": "4+ yrs",
+        "details": "Type safety for big codebases",
+        "description": "Type-safe JavaScript",
+        "projects": "All recent frontends",
+        "connects_to": ["React", "Node.js", "Next.js"]
+      },
+      {
+        "name": "Next.js",
+        "rating": 4,
+        "experience": "3+ yrs",
+        "details": "SSR & SSG magic for React",
+        "description": "Production React framework",
+        "projects": "Production web apps",
+        "connects_to": ["React", "Vercel", "TypeScript"]
+      },
+      {
+        "name": "HTML & CSS",
+        "rating": 5,
+        "experience": "7+ yrs",
+        "details": "Structure + style for every UI I build",
+        "description": "Core web technologies",
+        "projects": "Responsive layouts, Tailwind designs",
+        "connects_to": ["Tailwind CSS", "React"]
+      },
+      {
+        "name": "Tailwind CSS",
+        "rating": 5,
+        "experience": "4+ yrs",
+        "details": "Utility-first styling on steroids",
+        "description": "Modern CSS framework",
+        "projects": "Consistent design systems",
+        "connects_to": ["HTML & CSS", "React", "Next.js"]
+      },
+      {
+        "name": "Angular",
+        "rating": 3,
+        "experience": "2+ yrs",
+        "details": "Enterprise-grade frontend framework",
+        "description": "Enterprise web framework",
+        "projects": "Business applications",
+        "connects_to": ["TypeScript"]
+      }
+    ]
+  },
+  "Backend": {
+    "description": "Server-side development, databases, and system architecture",
+    "skills": [
+      {
+        "name": "Python",
+        "rating": 5,
+        "experience": "7+ yrs",
+        "details": "My go-to for backend and automation magic",
+        "description": "Versatile backend language",
+        "projects": "Automation scripts, data pipelines, Django APIs",
+        "connects_to": ["Django", "Flask"]
+      },
+      {
+        "name": "Django",
+        "rating": 5,
+        "experience": "6+ yrs",
+        "details": "Batteries-included for rapid API dev",
+        "description": "Python web framework",
+        "projects": "Enterprise web apps",
+        "connects_to": ["Python", "PostgreSQL"]
+      },
+      {
+        "name": "Flask",
+        "rating": 4,
+        "experience": "4+ yrs",
+        "details": "Lightweight and flexible Python web framework",
+        "description": "Python microframework",
+        "projects": "Microservices, APIs",
+        "connects_to": ["Python", "PostgreSQL"]
+      },
+      {
+        "name": "Node.js",
+        "rating": 4.5,
+        "experience": "5+ yrs",
+        "details": "Event-driven, non-blocking I/O",
+        "description": "JavaScript runtime",
+        "projects": "Real-time data pipelines",
+        "connects_to": ["Express", "MongoDB", "TypeScript"]
+      },
+      {
+        "name": "Java",
+        "rating": 4,
+        "experience": "6+ yrs",
+        "details": "OOP powerhouse for enterprise systems",
+        "description": "Enterprise language",
+        "projects": "Spring Boot microservices",
+        "connects_to": ["Spring"]
+      },
+      {
+        "name": "PostgreSQL",
+        "rating": 5,
+        "experience": "6+ yrs",
+        "details": "Complex schemas, advanced queries",
+        "description": "SQL database",
+        "projects": "Large-scale migrations",
+        "connects_to": ["Django", "Prisma", "Spring"]
+      },
+      {
+        "name": "MongoDB",
+        "rating": 4,
+        "experience": "4+ yrs",
+        "details": "Schema-flexible document store",
+        "description": "NoSQL database",
+        "projects": "NoSQL microservices",
+        "connects_to": ["Node.js", "Express"]
+      },
+      {
+        "name": "Redis",
+        "rating": 4.5,
+        "experience": "5+ yrs",
+        "details": "Blazing-fast in-memory store",
+        "description": "In-memory cache",
+        "projects": "Caching & sessions",
+        "connects_to": ["Node.js", "Django"]
+      },
+      {
+        "name": "Elasticsearch",
+        "rating": 3.5,
+        "experience": "2+ yrs",
+        "details": "Search & analytics powerhouse",
+        "description": "Search engine",
+        "projects": "Advanced search UX",
+        "connects_to": ["Kibana", "Node.js"]
+      }
+    ]
+  },
+  "DevOps & Cloud": {
+    "description": "Cloud infrastructure, containerization, and deployment automation",
+    "skills": [
+      {
+        "name": "AWS",
+        "rating": 5,
+        "experience": "5+ yrs",
+        "details": "EC2, S3, Lambda, RDS & more",
+        "description": "Cloud platform",
+        "projects": "Production infrastructure",
+        "connects_to": ["Docker", "Terraform", "Kubernetes"]
+      },
+      {
+        "name": "Docker",
+        "rating": 5,
+        "experience": "5+ yrs",
+        "details": "Containers for every app",
+        "description": "Containerization",
+        "projects": "All modern deployments",
+        "connects_to": ["Kubernetes", "AWS"]
+      },
+      {
+        "name": "Kubernetes",
+        "rating": 4,
+        "experience": "3+ yrs",
+        "details": "Orchestrating at scale",
+        "description": "Container orchestration",
+        "projects": "Production clusters",
+        "connects_to": ["Docker", "AWS", "Prometheus"]
+      },
+      {
+        "name": "Terraform",
+        "rating": 4,
+        "experience": "3+ yrs",
+        "details": "IaC for cloud infra",
+        "description": "Infrastructure as Code",
+        "projects": "AWS provisioning",
+        "connects_to": ["AWS", "Kubernetes"]
+      },
+      {
+        "name": "GitHub Actions",
+        "rating": 4,
+        "experience": "2+ yrs",
+        "details": "Modern CI/CD runner",
+        "description": "CI/CD platform",
+        "projects": "GitHub-hosted pipelines",
+        "connects_to": ["Docker", "AWS"]
+      },
+      {
+        "name": "Vercel",
+        "rating": 4.5,
+        "experience": "3+ yrs",
+        "details": "Zero-config deployments for Next.js",
+        "description": "Deployment platform",
+        "projects": "JAMstack applications",
+        "connects_to": ["Next.js", "GitHub Actions"]
+      },
+      {
+        "name": "Nginx",
+        "rating": 4.5,
+        "experience": "5+ yrs",
+        "details": "Reverse proxy & static host",
+        "description": "Web server",
+        "projects": "Production front-ends",
+        "connects_to": ["Docker", "AWS"]
+      }
+    ]
+  },
+  "Tools & Technologies": {
+    "description": "Development tools, monitoring, and essential technologies",
+    "skills": [
+      {
+        "name": "Git",
+        "rating": 5,
+        "experience": "7+ yrs",
+        "details": "Version control wizardry",
+        "description": "Version control",
+        "projects": "Every codebase ever",
+        "connects_to": ["GitHub Actions"]
+      },
+      {
+        "name": "Linux/Unix",
+        "rating": 5,
+        "experience": "7+ yrs",
+        "details": "My daily driver for dev & prod servers",
+        "description": "Operating system",
+        "projects": "Docker hosts, Kubernetes nodes",
+        "connects_to": ["Docker", "AWS"]
+      },
+      {
+        "name": "Datadog",
+        "rating": 4.5,
+        "experience": "3+ yrs",
+        "details": "APM + logs in one pane",
+        "description": "Monitoring platform",
+        "projects": "Full-stack dashboards",
+        "connects_to": ["Prometheus", "Grafana"]
+      },
+      {
+        "name": "Grafana",
+        "rating": 4,
+        "experience": "3+ yrs",
+        "details": "Beautiful dashboards",
+        "description": "Visualization platform",
+        "projects": "Operational views",
+        "connects_to": ["Prometheus", "Datadog"]
+      },
+      {
+        "name": "RabbitMQ",
+        "rating": 4.5,
+        "experience": "5+ yrs",
+        "details": "Reliable message broker, decoupling systems",
+        "description": "Message broker",
+        "projects": "Async pipelines",
+        "connects_to": ["Node.js", "Python"]
+      },
+      {
+        "name": "Firebase",
+        "rating": 3.5,
+        "experience": "2+ yrs",
+        "details": "Realtime DB, hosting & auth",
+        "description": "Backend as a Service",
+        "projects": "UI sync features",
+        "connects_to": ["React", "Node.js"]
+      }
+    ]
+  },
+  "AI & ML": {
+    "description": "Artificial Intelligence and Machine Learning",
+    "skills": [
+      {
+        "name": "OpenAI API",
+        "rating": 4.5,
+        "experience": "1+ yr",
+        "details": "GPT integration for smart applications",
+        "description": "AI Integration",
+        "projects": "AI-powered features",
+        "connects_to": ["Python", "Node.js"]
+      },
+      {
+        "name": "LangChain",
+        "rating": 4,
+        "experience": "1+ yr",
+        "details": "Building LLM-powered applications",
+        "description": "LLM framework",
+        "projects": "AI chatbots and agents",
+        "connects_to": ["OpenAI API", "Vector DBs"]
+      },
+      {
+        "name": "Vector DBs",
+        "rating": 3.5,
+        "experience": "1+ yr",
+        "details": "Semantic search and embeddings",
+        "description": "AI database",
+        "projects": "AI search systems",
+        "connects_to": ["LangChain", "OpenAI API"]
+      }
+    ]
+  }
+} 
