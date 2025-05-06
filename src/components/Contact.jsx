@@ -7,6 +7,7 @@ import { resume } from '../data/resume';
 export default function Contact() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
   const { phone, email, linkedin, github } = resume.hero.contact;
+  
   return (
     <section id="contact" ref={ref} className="py-20 px-4">
       <motion.div
@@ -22,11 +23,37 @@ export default function Contact() {
           <a href={`mailto:${email}`} className="underline">{email}</a>
         </p>
         <div className="flex justify-center space-x-6 text-2xl">
-          <a href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
-            <FaLinkedin />
+          <a 
+            href={linkedin} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-blue-500 flex items-center gap-3 group"
+          >
+            <div className="relative flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-600 group-hover:border-blue-400 transition-colors">
+                <img 
+                  src="/images/profile.jpg" 
+                  alt="Profile" 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <FaLinkedin className="text-2xl transition-transform group-hover:scale-110" />
+              <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full"></div>
+            </div>
+            <span className="text-sm font-medium">
+              Let's Connect
+            </span>
           </a>
-          <a href={github} target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">
-            <FaGithub />
+          <a 
+            href={github} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="hover:text-gray-400 flex items-center gap-2 group"
+          >
+            <FaGithub className="text-3xl transition-transform group-hover:scale-110" />
+            <span className="text-sm font-medium">
+              See my portfolio code
+            </span>
           </a>
         </div>
       </motion.div>
