@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaSun, FaMoon } from 'react-icons/fa';
 
 const Navbar = ({ onDashboardToggle }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('theme') || 'dark';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,9 +20,23 @@ const Navbar = ({ onDashboardToggle }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [theme]);
+
   const handleDashboardClick = () => {
     setShowDashboard(!showDashboard);
     onDashboardToggle(!showDashboard);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   };
 
   return (
@@ -38,13 +58,22 @@ const Navbar = ({ onDashboardToggle }) => {
               <a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a>
             </div>
           </div>
-          <button
-            onClick={handleDashboardClick}
-            className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:opacity-90 transition-opacity"
-          >
-            <span>Dashboard</span>
-            <FaChevronRight className={`transform transition-transform ${showDashboard ? 'rotate-90' : ''}`} />
-          </button>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 text-yellow-400 dark:text-blue-400 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <FaSun /> : <FaMoon />}
+            </button>
+            <button
+              onClick={handleDashboardClick}
+              className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center gap-2 hover:opacity-90 transition-opacity"
+            >
+              <span>Dashboard</span>
+              <FaChevronRight className={`transform transition-transform ${showDashboard ? 'rotate-90' : ''}`} />
+            </button>
+          </div>
         </div>
       </nav>
 
