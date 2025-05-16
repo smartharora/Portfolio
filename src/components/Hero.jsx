@@ -91,8 +91,6 @@ export default function Hero() {
           <source src="/videos/background.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       </div>
 
       <motion.div
