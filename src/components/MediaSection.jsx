@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaSpotify, FaGamepad, FaBook, FaSteam, FaWindows, FaBookOpen, FaGoodreads, FaChevronDown, FaLink, FaCode, FaGithub, FaExternalLinkAlt, FaCheckCircle } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import SpotifyWidget from './SpotifyWidget';
 
 // eslint-disable-next-line no-unused-vars
@@ -22,30 +23,55 @@ const GamingWidget = () => {
   
   const games = [
     {
-      title: "Valorant",
+      title: "Black Myth: Wukong",
       platform: "PC",
       status: "Currently Playing",
       icon: FaWindows,
-      rank: "Diamond 2",
-      hours: "150+",
-      link: "https://tracker.gg/valorant"
+      image: "/images/games/wukong.jpg",
+      description: "An action RPG based on Journey to the West, featuring stunning visuals and intense combat.",
+      progress: "Chapter 2",
+      link: "https://www.blackmythwukong.com"
     },
     {
-      title: "CS2",
-      platform: "Steam",
-      status: "Recently Played",
+      title: "Red Dead Redemption 2",
+      platform: "PC",
+      status: "Currently Playing",
       icon: FaSteam,
-      rank: "Gold Nova Master",
-      hours: "200+",
-      link: "https://steamcommunity.com/profiles/yourid"
+      image: "/images/games/rdr2.jpg",
+      description: "An epic tale of life in America's unforgiving heartland.",
+      progress: "Chapter 1",
+      link: "https://store.steampowered.com/app/1174180/Red_Dead_Redemption_2/"
+    },
+    {
+      title: "Ghost of Tsushima",
+      platform: "PlayStation",
+      status: "Completed",
+      icon: FaGamepad,
+      image: "/images/games/ghost.jpg",
+      description: "A samurai's journey through feudal Japan during the Mongol invasion.",
+      progress: "100%",
+      link: "https://www.playstation.com/en-us/games/ghost-of-tsushima/"
+    },
+    {
+      title: "God of War Ragnarök",
+      platform: "PlayStation",
+      status: "Completed",
+      icon: FaGamepad,
+      image: "/images/games/gow.jpg",
+      description: "Kratos and Atreus's journey through the Nine Realms.",
+      progress: "100%",
+      link: "https://www.playstation.com/en-us/games/god-of-war-ragnarok/"
     }
   ];
 
   return (
     <div className="space-y-4">
       {games.map((game, index) => (
-        <div 
+        <motion.div 
           key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
           className="bg-gray-800/50 rounded-lg overflow-hidden"
         >
           <div 
@@ -53,7 +79,13 @@ const GamingWidget = () => {
             onClick={() => setExpandedGame(expandedGame === index ? null : index)}
           >
             <div className="flex items-center gap-4">
-              <game.icon className="text-2xl text-blue-400" />
+              <div className="w-12 h-12 rounded-lg overflow-hidden">
+                <img 
+                  src={game.image} 
+                  alt={game.title} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
               <div>
                 <h4 className="font-medium text-white">{game.title}</h4>
                 <div className="flex items-center gap-2">
@@ -63,33 +95,43 @@ const GamingWidget = () => {
                 </div>
               </div>
             </div>
-            <div
+            <motion.div
+              animate={{ rotate: expandedGame === index ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
               className="text-gray-400"
             >
-              {expandedGame === index ? '▲' : '▼'}
-            </div>
+              <FaChevronDown />
+            </motion.div>
           </div>
           
-          <div
-            className={`overflow-hidden ${expandedGame === index ? '' : 'hidden'}`}
-          >
-            <div className="p-4 pt-0 border-t border-gray-700/50">
-              <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
-                <span>Rank: {game.rank}</span>
-                <span>Hours: {game.hours}</span>
-              </div>
-              <a 
-                href={game.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+          <AnimatePresence>
+            {expandedGame === index && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
               >
-                <FaLink />
-                View Stats
-              </a>
-            </div>
-          </div>
-        </div>
+                <div className="p-4 pt-0 border-t border-gray-700/50">
+                  <p className="text-sm text-gray-400 mb-3">{game.description}</p>
+                  <div className="flex items-center justify-between text-sm text-gray-400 mb-2">
+                    <span>Progress: {game.progress}</span>
+                  </div>
+                  <a 
+                    href={game.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                  >
+                    <FaLink />
+                    View Game
+                  </a>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
       ))}
     </div>
   );
