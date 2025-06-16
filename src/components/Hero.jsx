@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 import { useInView } from 'react-intersection-observer';
-import { FaDownload } from 'react-icons/fa';
+import { FaDownload, FaPlay, FaPause, FaRandom } from 'react-icons/fa';
 
 const container = {
   hidden: { opacity: 0 },
@@ -44,53 +44,143 @@ const downloadButton = {
 
 export default function Hero() {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
-  const videoRef = useRef(null);
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+  const videoRefs = useRef([]);
+
+  const backgroundVideos = [
+    {
+      src: "/videos/background.mp4",
+      title: "Main Background"
+    },
+    {
+      src: "/videos/background2.mp4",
+      title: "Alternative Background"
+    }
+  ];
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      // Force video to play
-      const playVideo = async () => {
+    // Initialize video refs array
+    videoRefs.current = videoRefs.current.slice(0, backgroundVideos.length);
+
+    // Play the current video
+    const playCurrentVideo = async () => {
+      const video = videoRefs.current[currentVideoIndex];
+      if (video) {
         try {
-          await video.play();
-          console.log('Video started playing');
+          if (isPlaying) {
+            await video.play();
+            console.log('Video started playing');
+          } else {
+            video.pause();
+          }
         } catch (error) {
           console.error('Error playing video:', error);
         }
-      };
+      }
+    };
 
-      // Add event listeners for better debugging
-      video.addEventListener('loadeddata', () => {
-        console.log('Video loaded successfully');
-        playVideo();
-      });
+    // Add event listeners for better debugging
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        video.addEventListener('loadeddata', () => {
+          console.log(`Video ${index} loaded successfully`);
+          if (index === currentVideoIndex) {
+            playCurrentVideo();
+          }
+        });
 
-      video.addEventListener('error', (e) => {
-        console.error('Video error:', e);
-      });
+        video.addEventListener('error', (e) => {
+          console.error(`Video ${index} error:`, e);
+        });
+      }
+    });
 
-      // Initial attempt to play
-      playVideo();
+    // Initial attempt to play
+    playCurrentVideo();
+  }, [currentVideoIndex, isPlaying]);
+
+  const handleVideoEnd = () => {
+    if (isAutoPlay) {
+      // Switch to next video when current one ends
+      setCurrentVideoIndex((prevIndex) => 
+        (prevIndex + 1) % backgroundVideos.length
+      );
     }
-  }, []);
+  };
+
+  const togglePlay = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const toggleAutoPlay = () => {
+    setIsAutoPlay(!isAutoPlay);
+  };
+
+  const switchVideo = () => {
+    setCurrentVideoIndex((prevIndex) => 
+      (prevIndex + 1) % backgroundVideos.length
+    );
+  };
 
   return (
     <section id="hero" ref={ref} className="relative min-h-screen flex items-center justify-center text-white px-4 overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 w-full h-full">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ backgroundColor: 'black' }}
+        <AnimatePresence mode="wait">
+          <motion.video
+            key={currentVideoIndex}
+            ref={el => videoRefs.current[currentVideoIndex] = el}
+            autoPlay
+            loop={!isAutoPlay}
+            muted
+            playsInline
+            preload="auto"
+            onEnded={handleVideoEnd}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ backgroundColor: 'black' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <source src={backgroundVideos[currentVideoIndex].src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </motion.video>
+        </AnimatePresence>
+      </div>
+
+      {/* Video Controls */}
+      <div className="absolute bottom-6 left-6 z-10 flex items-center gap-4 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+        <button
+          onClick={togglePlay}
+          className="text-white hover:text-blue-400 transition-colors"
+          aria-label={isPlaying ? "Pause video" : "Play video"}
         >
-          <source src="/videos/background.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+          {isPlaying ? <FaPause /> : <FaPlay />}
+        </button>
+        
+        <button
+          onClick={switchVideo}
+          className="text-white hover:text-blue-400 transition-colors"
+          aria-label="Switch video"
+        >
+          <FaRandom />
+        </button>
+
+        <div className="h-4 w-px bg-white/30" />
+
+        <button
+          onClick={toggleAutoPlay}
+          className={`px-3 py-1 rounded-full text-sm transition-colors ${
+            isAutoPlay 
+              ? 'bg-blue-500 text-white' 
+              : 'bg-white/10 text-white hover:bg-white/20'
+          }`}
+        >
+          Auto
+        </button>
       </div>
 
       <motion.div
