@@ -51,6 +51,13 @@ Thumbs.db
 .eslintcache
 .node_repl_history
 
+# Claude Code local settings
+.claude/
+.mcp.json
+
+# Playwright MCP screenshots
+.playwright-mcp/
+
 # Build artifacts
 *.tgz
 *.local

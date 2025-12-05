@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUser, FaTimes, FaCode, FaHome, FaStream, FaEnvelope } from 'react-icons/fa';
+import { FaUser, FaTimes, FaCode, FaHome, FaStream, FaEnvelope, FaProjectDiagram } from 'react-icons/fa';
 import MediaSection from './MediaSection';
+
+// Lazy load SkillGraph for performance
+const SkillGraph = lazy(() => import('./SkillGraph'));
 
 // eslint-disable-next-line no-unused-vars
 const FloatingButton = ({ icon: Icon, onClick, position, color, pulseColor, isActive }) => (
@@ -22,7 +25,7 @@ const FloatingButton = ({ icon: Icon, onClick, position, color, pulseColor, isAc
   </motion.button>
 );
 
-const PortalOverlay = ({ isOpen, onClose, children, from }) => (
+const PortalOverlay = ({ isOpen, onClose, children, from, fullWidth }) => (
   <AnimatePresence>
     {isOpen && (
       <motion.div
@@ -33,7 +36,7 @@ const PortalOverlay = ({ isOpen, onClose, children, from }) => (
         className="fixed inset-0 z-40 bg-gray-900/95"
       >
         <div className="absolute inset-0 backdrop-blur-md" onClick={onClose} />
-        <motion.div 
+        <motion.div
           className="absolute inset-0 w-full h-full bg-gray-900/95 shadow-2xl"
           initial={{ opacity: 0, x: from === 'right' ? 100 : -100 }}
           animate={{ opacity: 1, x: 0 }}
@@ -45,11 +48,17 @@ const PortalOverlay = ({ isOpen, onClose, children, from }) => (
           >
             <FaTimes className="text-gray-400 hover:text-white" />
           </button>
-          <div 
-            className="h-full py-16 px-6 max-w-7xl mx-auto overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
-          >
-            {children}
-          </div>
+          {fullWidth ? (
+            <div className="h-full w-full">
+              {children}
+            </div>
+          ) : (
+            <div
+              className="h-full py-16 px-6 max-w-7xl mx-auto overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            >
+              {children}
+            </div>
+          )}
         </motion.div>
       </motion.div>
     )}
@@ -109,14 +118,33 @@ const Sidebar = () => {
 
 const FloatingPortals = () => {
   const [personalOpen, setPersonalOpen] = useState(false);
+  const [skillGraphOpen, setSkillGraphOpen] = useState(false);
 
   const handlePersonalClick = () => {
     setPersonalOpen(!personalOpen);
+    if (skillGraphOpen) setSkillGraphOpen(false);
+  };
+
+  const handleSkillGraphClick = () => {
+    setSkillGraphOpen(!skillGraphOpen);
+    if (personalOpen) setPersonalOpen(false);
   };
 
   return (
     <>
       <Sidebar />
+
+      {/* Skill Graph Button - Cyan/Teal */}
+      <FloatingButton
+        icon={FaProjectDiagram}
+        onClick={handleSkillGraphClick}
+        position="bottom-8 right-24"
+        color="bg-gradient-to-r from-cyan-500 to-teal-500"
+        pulseColor="#06B6D4"
+        isActive={skillGraphOpen}
+      />
+
+      {/* Personal/Beyond Code Button - Purple/Pink */}
       <FloatingButton
         icon={FaUser}
         onClick={handlePersonalClick}
@@ -126,8 +154,29 @@ const FloatingPortals = () => {
         isActive={personalOpen}
       />
 
-      <PortalOverlay 
-        isOpen={personalOpen} 
+      {/* Skill Graph Overlay */}
+      <PortalOverlay
+        isOpen={skillGraphOpen}
+        onClose={() => setSkillGraphOpen(false)}
+        from="right"
+        fullWidth
+      >
+        <Suspense fallback={
+          <div className="flex items-center justify-center h-full">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+              className="w-12 h-12 border-2 border-cyan-500 border-t-transparent rounded-full"
+            />
+          </div>
+        }>
+          <SkillGraph onClose={() => setSkillGraphOpen(false)} />
+        </Suspense>
+      </PortalOverlay>
+
+      {/* Personal Content Overlay */}
+      <PortalOverlay
+        isOpen={personalOpen}
         onClose={() => setPersonalOpen(false)}
         from="right"
       >
