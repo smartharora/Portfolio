@@ -24,22 +24,26 @@ A modern, interactive portfolio website showcasing my skills, experience, and pr
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/smartharora/Portfolio.git
 cd Portfolio
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
 
 4. Build for production:
+
 ```bash
 npm run build
 ```
@@ -71,7 +75,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Feel free to fork this project and use it as a template for your own portfolio. If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
 
-## 📞 Contact
+## Contact
 
 - **Email**: iamsmartharora@gmail.com
 - **LinkedIn**: [smartharora](https://linkedin.com/in/smartharora)
