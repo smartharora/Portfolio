@@ -104,7 +104,7 @@
         "details": "OOP powerhouse for enterprise systems",
         "description": "Enterprise language",
         "projects": "Spring Boot microservices",
-        "connects_to": ["Spring"]
+        "connects_to": ["PostgreSQL", "AWS", "Docker", "Kubernetes"]
       },
       {
         "name": "PostgreSQL",
